@@ -1,0 +1,1643 @@
+/* Точная стилистика среды разработки ONI PLR Studio (Windows Classic Industrial IDE) + адаптация под планшет Android */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+input, textarea, select, code, pre, .kip-guide-article {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Tahoma, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 12px;
+  color: #111111;
+  background: #D4D0C8;
+}
+
+.oni-app-window {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #F0F0F0;
+}
+
+/* 1. Titlebar */
+.oni-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 28px;
+  padding: 0 8px;
+  background: linear-gradient(90deg, #004A8F 0%, #0E6AC7 65%, #1D7FE0 100%);
+  color: #FFFFFF;
+  border-bottom: 1px solid #003366;
+  flex-shrink: 0;
+}
+
+.oni-title-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.oni-logo-diamond {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 6px;
+  background: #FFFFFF;
+  color: #0054A6;
+  font-weight: 900;
+  font-size: 11px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+}
+
+.oni-title-text {
+  font-weight: bold;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.oni-title-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.oni-title-btn {
+  background: rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  padding: 2px 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.oni-title-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 2. Menu Bar */
+.oni-menubar {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 4px;
+  background: #F5F5F5;
+  border-bottom: 1px solid #D0D0D0;
+  flex-shrink: 0;
+}
+
+.oni-menu-item-wrap {
+  position: relative;
+}
+
+.oni-menu-root-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 2px 9px;
+  font-size: 12px;
+  color: #111;
+  cursor: pointer;
+}
+.oni-menu-root-btn:hover,
+.oni-menu-root-btn.open {
+  background: #DCEBFC;
+  border-color: #7EB4EA;
+}
+
+.oni-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 295px;
+  background: #FFFFFF;
+  border: 1px solid #8A8A8A;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.25);
+  z-index: 2000;
+  padding: 2px;
+}
+
+.oni-menu-dd-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  padding: 5px 10px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 12px;
+  color: #111;
+  cursor: pointer;
+}
+.oni-menu-dd-row:hover {
+  background: #0060C0;
+  color: #FFFFFF;
+}
+.oni-menu-dd-row kbd {
+  font-family: Consolas, monospace;
+  font-size: 11px;
+  opacity: 0.78;
+}
+
+.oni-menu-sep {
+  height: 1px;
+  background: #DCDCDC;
+  margin: 3px 4px;
+}
+
+/* 3. Top Icon Toolbar */
+.oni-top-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-height: 32px;
+  padding: 2px 6px;
+  background: linear-gradient(180deg, #FAFAFA 0%, #E6E6E6 100%);
+  border-bottom: 1px solid #A8A8A8;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.oni-tb-btn {
+  height: 25px;
+  padding: 0 7px;
+  background: #F4F4F4;
+  border: 1px solid #BDBDBD;
+  border-radius: 2px;
+  font-size: 11.5px;
+  color: #111;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.oni-tb-btn:hover {
+  background: #E2F0FF;
+  border-color: #569DE5;
+}
+.oni-tb-btn:active {
+  background: #CCE4FF;
+}
+
+.oni-tb-btn.sim-main-btn {
+  background: #E7F7EC;
+  border-color: #2B8A3E;
+  color: #145A23;
+  font-weight: bold;
+}
+.oni-tb-btn.sim-main-btn.active-sim {
+  background: #D92626;
+  border-color: #8C0000;
+  color: #FFFFFF;
+}
+
+.oni-tb-sep {
+  width: 1px;
+  height: 20px;
+  background: #BDBDBD;
+  margin: 0 3px;
+}
+
+.oni-tb-select {
+  height: 25px;
+  font-size: 11.5px;
+  border: 1px solid #999;
+  background: #FFF;
+  max-width: 245px;
+}
+
+/* 4. Middle Main Layout */
+.oni-middle-row {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Far-left ONI PLR Studio Quick Strip */
+.oni-left-strip {
+  width: 32px;
+  background: #EAEAEA;
+  border-right: 1px solid #A8A8A8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 2px;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.oni-strip-btn {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid #B0B0B0;
+  background: #F8F8F8;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.oni-strip-btn:hover {
+  border-color: #0066CC;
+  background: #E5F1FB;
+}
+.oni-strip-btn.active {
+  background: #CCE4FF;
+  border: 2px solid #0055AA;
+}
+.oni-strip-btn.badge-co {
+  background: #00A83E;
+  color: #FFF;
+  border-color: #00742A;
+}
+.oni-strip-btn.badge-gf {
+  background: #6299D9;
+  color: #FFF;
+  border-color: #3B6CA8;
+}
+.oni-strip-btn.badge-sf {
+  background: #0068B7;
+  color: #FFF;
+  border-color: #00467F;
+}
+.oni-strip-btn.badge-af {
+  background: #004A8F;
+  color: #FFF;
+  border-color: #002F5E;
+}
+.oni-strip-btn.sim-bug {
+  margin-top: auto;
+  background: #E8F8EE;
+  border-color: #2B8A3E;
+}
+
+/* Left Docked Block Library Tree */
+.oni-library-dock {
+  width: 228px;
+  background: #FFFFFF;
+  border-right: 1px solid #999999;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.oni-lib-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 7px;
+  background: #E4E7EB;
+  border-bottom: 1px solid #B5B5B5;
+  font-weight: bold;
+  font-size: 11.5px;
+}
+.oni-lib-close {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.oni-lib-search-wrap {
+  padding: 4px;
+  background: #F4F4F4;
+  border-bottom: 1px solid #DCDCDC;
+}
+.oni-lib-search-wrap input {
+  width: 100%;
+  height: 23px;
+  padding: 2px 6px;
+  font-size: 11.5px;
+  border: 1px solid #AAAAAA;
+}
+
+.oni-lib-tree {
+  flex: 1;
+  overflow-y: auto;
+  padding: 3px 0;
+}
+
+.oni-lib-folder {
+  width: 100%;
+  text-align: left;
+  background: #F7F7F7;
+  border: none;
+  border-bottom: 1px solid #ECECEC;
+  padding: 4px 6px;
+  font-weight: bold;
+  font-size: 11.5px;
+  color: #1F2D3D;
+  cursor: pointer;
+}
+.oni-lib-folder:hover {
+  background: #EBF3FC;
+}
+
+.oni-lib-folder-items {
+  padding: 2px 0 4px 10px;
+}
+
+.oni-lib-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 6px;
+  font-size: 11.5px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.oni-lib-item:hover {
+  background: #E6F2FF;
+}
+.oni-lib-item.armed {
+  background: #CCE4FF;
+  border-color: #0060C0;
+  font-weight: bold;
+}
+
+.mini-blk-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 17px;
+  padding: 0 3px;
+  font-size: 9.5px;
+  font-weight: bold;
+  color: #FFF;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.mini-blk-badge.io_green, .ref-big-icon.io_green {
+  background: #00A83E;
+}
+.mini-blk-badge.logic_blue, .ref-big-icon.logic_blue {
+  background: #6299D9;
+}
+.mini-blk-badge.sf_blue, .ref-big-icon.sf_blue {
+  background: #0068B7;
+}
+
+/* Workspace Center Column */
+.oni-workspace-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.oni-doc-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 26px;
+  padding: 2px 6px 0;
+  background: #DEDEDE;
+  border-bottom: 1px solid #999999;
+  flex-shrink: 0;
+}
+
+.oni-doc-tab {
+  height: 23px;
+  padding: 0 12px;
+  background: #ECECEC;
+  border: 1px solid #999999;
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+  font-size: 11.5px;
+  color: #333;
+  cursor: pointer;
+}
+.oni-doc-tab.active {
+  background: #FFFFFF;
+  color: #003E7E;
+  font-weight: bold;
+  height: 24px;
+}
+
+.oni-panes-wrap {
+  flex: 1;
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.oni-pane {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+.oni-pane.active {
+  display: block;
+}
+
+.oni-fbd-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  outline: none;
+}
+
+/* 5. Bottom Simulator Dock */
+.oni-bottom-wrap {
+  flex-shrink: 0;
+  border-top: 1px solid #8C8C8C;
+  background: #ECECEC;
+}
+
+.oni-bottom-dock.collapsed .oni-bottom-content {
+  display: none;
+}
+
+.oni-bottom-tabbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 6px;
+  background: #DFDFDF;
+  border-bottom: 1px solid #B0B0B0;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.oni-bottom-tabs-left {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.oni-btab {
+  padding: 3px 9px;
+  font-size: 11px;
+  border: 1px solid #AAAAAA;
+  background: #EFEFEF;
+  cursor: pointer;
+}
+.oni-btab.active {
+  background: #FFFFFF;
+  font-weight: bold;
+  border-bottom-color: #FFFFFF;
+  color: #004A8F;
+}
+
+.oni-bottom-sim-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.oni-sim-status-pill {
+  padding: 2px 7px;
+  border-radius: 2px;
+  font-size: 10.5px;
+  font-weight: bold;
+  font-family: Consolas, monospace;
+}
+.oni-sim-status-pill.stop {
+  background: #D8D8D8;
+  color: #333;
+}
+.oni-sim-status-pill.run {
+  background: #D3F9D8;
+  color: #0B6E24;
+  border: 1px solid #2B8A3E;
+}
+
+.oni-bottom-content {
+  height: 132px;
+  overflow-y: auto;
+  padding: 6px 8px;
+  background: #F6F6F6;
+}
+
+/* Digital I/O strip */
+.oni-dio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.oni-dio-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.oni-dio-sec-title {
+  width: 132px;
+  font-weight: bold;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.oni-dio-strip {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.oni-dio-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50px;
+}
+.oni-io-btn {
+  width: 46px;
+  height: 30px;
+  border: 1px solid #777;
+  background: linear-gradient(180deg, #FFF, #DDD);
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-weight: bold;
+  font-size: 11px;
+}
+.oni-io-btn.active {
+  background: linear-gradient(180deg, #FF5252, #C92A2A);
+  color: #FFF;
+  border-color: #7A0000;
+}
+.io-led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #777;
+}
+.oni-io-btn.active .io-led {
+  background: #FFEA00;
+  box-shadow: 0 0 5px #FFEA00;
+}
+
+.oni-io-lamp {
+  width: 46px;
+  height: 30px;
+  border: 1px solid #888;
+  background: #E2E2E2;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-weight: bold;
+  font-size: 11px;
+}
+.oni-io-lamp.lit {
+  background: #2B9348;
+  color: #FFF;
+  border-color: #145A23;
+  box-shadow: 0 0 8px rgba(43, 147, 72, 0.65);
+}
+.oni-io-lamp .io-bulb {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+}
+.oni-io-lamp.lit .io-bulb {
+  background: #B9F6CA;
+}
+.io-sub {
+  font-size: 9.5px;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 50px;
+}
+
+/* Analog I/O cards */
+.oni-aio-channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 6px;
+}
+.oni-aio-card {
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  padding: 5px 7px;
+  border-radius: 2px;
+}
+.aio-hdr {
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+.aio-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.aio-slider-row input[type="range"] {
+  flex: 1;
+}
+.aio-readout {
+  font-size: 10.5px;
+  margin-top: 2px;
+  color: #222;
+}
+.ao-bar {
+  height: 8px;
+  background: #DDD;
+  border: 1px solid #AAA;
+  margin-top: 2px;
+}
+.ao-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #0077B6;
+}
+
+/* LCD Screen Tab */
+.oni-lcd-dock-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.oni-lcd-module {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #2C353D;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 2px solid #1A2026;
+}
+.oni-lcd-glass {
+  width: 196px;
+  padding: 6px 9px;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.32;
+  border: 2px inset #444;
+  letter-spacing: 0.6px;
+}
+.oni-lcd-glass.backlight-green {
+  background: #9CD654;
+  color: #152804;
+}
+.oni-lcd-glass.backlight-white {
+  background: #E8F1F8;
+  color: #102030;
+}
+.oni-lcd-glass.backlight-amber {
+  background: #FFCA28;
+  color: #2E1C00;
+}
+.oni-lcd-glass.backlight-red {
+  background: #FF5252;
+  color: #FFFFFF;
+}
+.lcd-line {
+  white-space: pre;
+}
+.oni-lcd-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+.oni-panel-key {
+  padding: 4px 6px;
+  font-size: 10px;
+  font-weight: bold;
+  background: #495663;
+  color: #FFF;
+  border: 1px solid #8895A2;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.oni-panel-key:active {
+  background: #0077CC;
+}
+
+/* Oscilloscope */
+.oni-osc-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.oni-osc-legend {
+  display: flex;
+  gap: 14px;
+  font-size: 11px;
+  font-weight: bold;
+  background: #1A242F;
+  padding: 2px 8px;
+}
+.oni-osc-canvas {
+  width: 100%;
+  height: 92px;
+  border: 1px solid #333;
+}
+
+/* ERC & Modbus split */
+.oni-erc-modbus-split {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 10px;
+  height: 100%;
+}
+.pane-hdr {
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+.erc-row {
+  padding: 3px 6px;
+  font-size: 11px;
+  margin-bottom: 2px;
+  border-radius: 2px;
+}
+.erc-row.sev-info {
+  background: #E7F5FF;
+  color: #0B4F6C;
+}
+.erc-row.sev-warning {
+  background: #FFF3BF;
+  color: #704B00;
+}
+.erc-row.sev-error {
+  background: #FFE3E3;
+  color: #A61E1E;
+  font-weight: bold;
+}
+
+.oni-modbus-tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  background: #FFF;
+}
+.oni-modbus-tbl th, .oni-modbus-tbl td {
+  border: 1px solid #CCCCCC;
+  padding: 3px 6px;
+  text-align: left;
+}
+.oni-modbus-tbl th {
+  background: #E8ECEF;
+}
+
+/* Statusbar */
+.oni-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 22px;
+  padding: 0 8px;
+  background: #E4E4E4;
+  border-top: 1px solid #B5B5B5;
+  font-size: 11px;
+  color: #222;
+  flex-shrink: 0;
+}
+
+/* Ladder Diagram (LD) */
+.oni-ld-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #F4F6F8;
+}
+.oni-ld-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: #E6EBEF;
+  border-bottom: 1px solid #BCC5CE;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.oni-ld-toolbar-left, .oni-ld-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.oni-ld-sheet {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+.oni-ld-empty {
+  background: #FFF;
+  border: 1px dashed #888;
+  padding: 18px;
+  max-width: 680px;
+  margin: 18px auto;
+  line-height: 1.5;
+}
+.oni-ld-rung {
+  background: #FFFFFF;
+  border: 1px solid #B8C2CC;
+  margin-bottom: 12px;
+  border-radius: 3px;
+}
+.oni-ld-rung-hdr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px;
+  background: #EDF2F7;
+  border-bottom: 1px solid #CBD5E0;
+  font-size: 11.5px;
+}
+.oni-ld-rail-row {
+  display: flex;
+  align-items: stretch;
+  min-height: 76px;
+  padding: 8px 6px;
+}
+.oni-ld-power-rail {
+  width: 5px;
+  background: #222;
+}
+.oni-ld-power-rail.left {
+  background: #C92A2A;
+}
+.oni-ld-power-rail.right {
+  background: #1864AB;
+}
+.oni-ld-track {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 12px;
+}
+.oni-ld-series-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #444;
+  padding-bottom: 4px;
+}
+.oni-ld-shunt-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  margin-left: 12px;
+  padding: 4px 10px;
+  border-left: 2px solid #444;
+  border-right: 2px solid #444;
+  border-bottom: 2px solid #444;
+  width: fit-content;
+}
+.oni-ld-coil-wrap {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+}
+.oni-ld-cell {
+  min-width: 84px;
+  padding: 4px 8px;
+  border: 1px solid #BCC5CE;
+  background: #F9FAFB;
+  border-radius: 3px;
+  text-align: center;
+  cursor: pointer;
+}
+.oni-ld-cell:hover {
+  border-color: #0066CC;
+}
+.oni-ld-cell.energized {
+  background: #FFE3E3;
+  border: 2px solid #E03131;
+  color: #960000;
+}
+.oni-ld-operand {
+  font-family: Consolas, monospace;
+  font-weight: bold;
+  font-size: 12px;
+}
+.oni-ld-symbol {
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 2px 0;
+}
+.oni-ld-comment {
+  font-size: 10px;
+  color: #555;
+}
+
+/* HMI & Plant Workbench */
+.oni-hmi-workbench {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #ECEFF1;
+}
+.oni-hmi-subnav {
+  display: flex;
+  gap: 4px;
+  padding: 5px 8px;
+  background: #CFD8DC;
+  border-bottom: 1px solid #90A4AE;
+  flex-wrap: wrap;
+}
+.oni-subtab-btn {
+  padding: 4px 10px;
+  border: 1px solid #78909C;
+  background: #ECEFF1;
+  font-size: 11.5px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.oni-subtab-btn.active {
+  background: #004A8F;
+  color: #FFF;
+  border-color: #003366;
+  font-weight: bold;
+}
+.oni-hmi-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.kip-plant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FFF;
+  border: 1px solid #B0BEC5;
+  padding: 7px 10px;
+  margin-bottom: 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.kip-plant-select-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.kip-mnemonic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+}
+.kip-tank-card, .kip-fault-card {
+  background: #FFFFFF;
+  border: 1px solid #B0BEC5;
+  padding: 12px;
+  border-radius: 3px;
+}
+.kip-card-title {
+  font-weight: bold;
+  font-size: 13px;
+  color: #003E7E;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #E0E0E0;
+  padding-bottom: 4px;
+}
+.kip-tank-visual-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.kip-tank-vessel {
+  position: relative;
+  width: 96px;
+  height: 165px;
+  border: 3px solid #37474F;
+  border-radius: 6px;
+  background: #ECEFF1;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.kip-tank-water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, #29B6F6 0%, #0277BD 100%);
+  transition: height 0.12s linear;
+}
+.kip-tank-mark {
+  position: absolute;
+  left: 4px;
+  font-size: 9.5px;
+  font-weight: bold;
+  color: #111;
+  background: rgba(255,255,255,0.75);
+  padding: 0 3px;
+}
+.kip-tank-mark.high { bottom: 80%; }
+.kip-tank-mark.low { bottom: 25%; }
+.kip-tank-readouts {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.kip-unit-badge {
+  padding: 5px 9px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 11.5px;
+}
+.kip-unit-badge.off { background: #E0E0E0; color: #444; }
+.kip-unit-badge.on { background: #C8E6C9; color: #1B5E20; border: 1px solid #2E7D32; }
+.kip-unit-badge.fault { background: #FFCDD2; color: #B71C1C; border: 1px solid #C62828; }
+.kip-fault-chk {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.kip-io-legend {
+  margin-top: 12px;
+  padding: 8px;
+  background: #F1F8FF;
+  border: 1px solid #B6D4FE;
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+.kip-oven-chamber {
+  height: 140px;
+  border: 3px solid #455A64;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.kip-oven-temp-big {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: Consolas, monospace;
+}
+.kip-conveyor-track {
+  position: relative;
+  height: 68px;
+  background: #37474F;
+  border: 3px solid #263238;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.kip-conveyor-sensor {
+  position: absolute;
+  left: 44%;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  border-left: 2px dashed #FFEA00;
+  border-right: 2px dashed #FFEA00;
+  color: #FFEA00;
+  font-size: 10px;
+  text-align: center;
+  padding-top: 3px;
+}
+.kip-conveyor-box {
+  position: absolute;
+  top: 22px;
+  font-size: 26px;
+}
+
+/* HMI Custom Widgets */
+.oni-hmi-widgets-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.oni-hmi-widget-card {
+  width: 175px;
+  background: #263238;
+  color: #FFF;
+  border: 2px solid #455A64;
+  border-radius: 5px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.oni-hmi-widget-card.active.color-green { background: #1B5E20; border-color: #69F0AE; }
+.oni-hmi-widget-card.active.color-red { background: #B71C1C; border-color: #FF8A80; }
+.oni-hmi-widget-card.active.color-amber { background: #E65100; border-color: #FFD180; }
+.oni-hmi-widget-card.active.color-blue { background: #0D47A1; border-color: #82B1FF; }
+.hmi-card-top {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  opacity: 0.85;
+}
+.hmi-tag { flex: 1; font-family: Consolas, monospace; }
+.hmi-cfg-btn, .hmi-del-btn {
+  background: transparent;
+  color: #FFF;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+}
+.hmi-label {
+  font-weight: bold;
+  font-size: 12.5px;
+  margin: 6px 0 4px;
+}
+.hmi-live-val {
+  font-family: Consolas, monospace;
+  font-size: 13px;
+  color: #B2FF59;
+}
+.hmi-bar-bg {
+  height: 6px;
+  background: #111;
+  margin-top: 5px;
+}
+.hmi-bar-fill {
+  height: 100%;
+  background: #00E5FF;
+  width: 0%;
+}
+
+/* DIN Rail Wiring Housing */
+.din-rail-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.din-plc-housing {
+  background: #E5E8EB;
+  border: 2px solid #5C6670;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 780px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+}
+.din-terminals-row {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.din-term {
+  background: #CFD4D9;
+  border: 1px solid #777;
+  padding: 4px 6px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 42px;
+  cursor: pointer;
+  font-family: Consolas, monospace;
+  font-size: 10.5px;
+  font-weight: bold;
+}
+.din-term.pwr { background: #FFCDD2; cursor: default; }
+.din-term.gnd { background: #BBDEFB; cursor: default; }
+.din-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #666;
+  margin-top: 2px;
+}
+.din-led.lit {
+  background: #00E676;
+  box-shadow: 0 0 6px #00E676;
+}
+.din-led.out.lit {
+  background: #FF3D00;
+  box-shadow: 0 0 6px #FF3D00;
+}
+.din-plc-body-mid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 12px 0;
+  padding: 12px;
+  background: #343D46;
+  color: #FFF;
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+.din-brand-logo {
+  font-size: 20px;
+  font-weight: 900;
+  color: #4FC3F7;
+}
+.din-lcd-bezel {
+  background: #9CD654;
+  color: #142603;
+  font-family: Consolas, monospace;
+  font-weight: bold;
+  padding: 8px 12px;
+  border: 3px inset #555;
+  min-width: 190px;
+}
+.din-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 36px);
+  gap: 5px;
+}
+.din-key {
+  background: #546E7A;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: bold;
+}
+.din-relay-pair {
+  background: #D5DCE2;
+  border: 1px solid #777;
+  padding: 5px 8px;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 10.5px;
+  flex: 1;
+  min-width: 95px;
+}
+.din-wiring-notes {
+  background: #FFF;
+  border: 1px solid #B0BEC5;
+  padding: 10px 14px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.din-wiring-notes h4 { margin: 0 0 6px; color: #004A8F; }
+.din-wiring-notes ul { margin: 0; padding-left: 18px; }
+
+/* Classic Windows Modals & Context Menus */
+.oni-context-menu {
+  position: fixed;
+  min-width: 225px;
+  background: #FFFFFF;
+  border: 1px solid #7A7A7A;
+  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.28);
+  z-index: 3500;
+  padding: 3px;
+}
+.ctx-hdr {
+  padding: 4px 8px;
+  font-weight: bold;
+  font-size: 11px;
+  background: #ECEFF1;
+  border-bottom: 1px solid #DDD;
+}
+.ctx-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding: 6px 9px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 12px;
+  cursor: pointer;
+}
+.ctx-item:hover {
+  background: #0060C0;
+  color: #FFF;
+}
+.ctx-item.danger {
+  color: #B71C1C;
+}
+.ctx-item.danger:hover {
+  background: #C62828;
+  color: #FFF;
+}
+
+.oni-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 10px;
+}
+
+.oni-win-dialog {
+  background: #F0F0F0;
+  border: 2px solid #004A8F;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  max-height: 92vh;
+}
+.oni-win-dialog-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: linear-gradient(90deg, #004A8F, #1976D2);
+  color: #FFF;
+  font-weight: bold;
+  font-size: 12.5px;
+}
+.oni-dlg-close {
+  background: #D32F2F;
+  color: #FFF;
+  border: 1px solid #FFCDD2;
+  width: 22px;
+  height: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.oni-win-dialog-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 6px 10px 0;
+  background: #E4E4E4;
+  border-bottom: 1px solid #AAA;
+}
+.oni-dtab {
+  padding: 4px 12px;
+  border: 1px solid #999;
+  border-bottom: none;
+  background: #DCDCDC;
+  cursor: pointer;
+  font-size: 12px;
+}
+.oni-dtab.active {
+  background: #F0F0F0;
+  font-weight: bold;
+}
+.oni-win-dialog-body {
+  padding: 12px;
+  overflow-y: auto;
+  flex: 1;
+}
+.oni-win-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #E4E4E4;
+  border-top: 1px solid #BBBBBB;
+}
+
+.oni-win-btn {
+  padding: 5px 13px;
+  border: 1px solid #888;
+  background: linear-gradient(180deg, #FFF, #E2E2E2);
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.oni-win-btn:hover { border-color: #0055AA; background: #EAF3FC; }
+.oni-win-btn.primary {
+  background: linear-gradient(180deg, #1E88E5, #0D47A1);
+  color: #FFF;
+  border-color: #082E6B;
+  font-weight: bold;
+}
+.oni-win-btn.danger, .oni-win-btn-sm.danger {
+  background: #D32F2F;
+  color: #FFF;
+  border-color: #8E0000;
+}
+.oni-win-btn-sm {
+  padding: 2px 8px;
+  border: 1px solid #888;
+  background: #FFF;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.oni-win-btn-sm.sim-go {
+  background: #2B8A3E;
+  color: #FFF;
+  border-color: #145A23;
+  font-weight: bold;
+}
+
+.oni-win-fieldset {
+  border: 1px solid #B5B5B5;
+  padding: 8px 10px;
+  background: #FAFAFA;
+}
+.oni-win-fieldset legend {
+  font-weight: bold;
+  padding: 0 5px;
+  color: #004A8F;
+}
+.oni-prop-toprow {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.oni-prop-toprow label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11.5px;
+}
+.oni-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.oni-form-row input, .oni-form-row select, .oni-form-row textarea, .oni-prop-toprow input {
+  padding: 4px 6px;
+  border: 1px solid #999;
+  font-size: 12px;
+}
+.oni-field-help {
+  color: #555;
+  font-size: 11px;
+}
+.oni-chk-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.oni-prop-flags {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.oni-cpu-radio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid #CCC;
+  background: #FFF;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.oni-cpu-radio-card.selected {
+  border-color: #0060C0;
+  background: #EBF5FF;
+}
+.kip-calc-result {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: #E8F4FD;
+  border: 1px solid #90CAF9;
+  font-size: 12px;
+}
+
+/* Split modal (Practice Tasks & Reference) */
+.oni-split-modal {
+  display: grid;
+  grid-template-columns: 265px 1fr;
+  gap: 12px;
+  min-height: 430px;
+}
+.oni-split-list {
+  background: #FFF;
+  border: 1px solid #BBB;
+  overflow-y: auto;
+  max-height: 62vh;
+}
+.oni-split-detail {
+  background: #FFF;
+  border: 1px solid #BBB;
+  padding: 12px 14px;
+  overflow-y: auto;
+  max-height: 62vh;
+}
+.ref-cat-hdr {
+  padding: 4px 8px;
+  background: #E3E8EE;
+  font-weight: bold;
+  font-size: 11px;
+  color: #1F2D3D;
+}
+.oni-task-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding: 7px 8px;
+  border: none;
+  border-bottom: 1px solid #EEE;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-size: 12px;
+}
+.oni-task-item:hover { background: #F0F7FF; }
+.oni-task-item.active {
+  background: #D0E8FF;
+  font-weight: bold;
+}
+.task-item-lvl {
+  font-size: 10.5px;
+  color: #555;
+}
+.task-lvl-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #004A8F;
+  color: #FFF;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: bold;
+}
+.oni-hint-box {
+  background: #FFFDE7;
+  border: 1px solid #FBC02D;
+  padding: 6px 10px;
+  margin: 8px 0;
+  font-size: 12px;
+}
+.task-action-bar {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+.grade-banner {
+  padding: 8px 10px;
+  font-weight: bold;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+.grade-banner.pass { background: #D3F9D8; color: #145A23; border: 1px solid #2B8A3E; }
+.grade-banner.fail { background: #FFE3E3; color: #961414; border: 1px solid #C92A2A; }
+.grade-step {
+  padding: 4px 8px;
+  font-size: 12px;
+  border-bottom: 1px solid #EEE;
+}
+.grade-step.ok { color: #1B5E20; }
+.grade-step.err { color: #B71C1C; background: #FFF5F5; }
+.grade-err-detail { font-family: Consolas, monospace; font-size: 11.5px; margin-top: 2px; }
+
+.ref-big-icon {
+  width: 48px;
+  height: 54px;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 3px;
+}
+.kip-wiring-pre {
+  background: #1A242F;
+  color: #A5D6A7;
+  padding: 8px 10px;
+  font-family: Consolas, monospace;
+  font-size: 11px;
+  overflow-x: auto;
+  border-radius: 3px;
+}
+
+.oni-toast {
+  position: fixed;
+  bottom: 32px;
+  right: 18px;
+  background: #1B2836;
+  color: #FFF;
+  padding: 8px 14px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  z-index: 4000;
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  .oni-library-dock {
+    width: 175px;
+  }
+  .oni-split-modal {
+    grid-template-columns: 1fr;
+  }
+  .oni-erc-modbus-split {
+    grid-template-columns: 1fr;
+  }
+}

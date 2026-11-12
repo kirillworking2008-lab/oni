@@ -1,0 +1,28 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'ru.oni.plrstudio'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "ru.oni.plrstudio"
+        minSdk 24
+        targetSdk 34
+        versionCode 100
+        versionName "1.0.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+}

@@ -1,0 +1,13 @@
+# Dependencies & caches
+node_modules/
+.npm/
+dist/
+
+# Android intermediate build outputs
+android/.gradle/
+android/local.properties
+android/app/build/
+android/build/
+.build-apk-tmp/
+*.keystore
+*.idsig

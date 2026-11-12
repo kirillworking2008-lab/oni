@@ -1,0 +1,18 @@
+{
+  "name": "oni-plr-studio-android",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Точная Android-копия ONI PLR Studio (FBD + LD + Стенд КИПиА + Справочник и Практикум)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173",
+    "build:web": "tsc --noEmit && vite build",
+    "build:apk": "npm run build:web && bash scripts/build-apk.sh",
+    "test": "npx tsx tests/simulator.test.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}
